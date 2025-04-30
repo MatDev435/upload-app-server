@@ -14,11 +14,10 @@ datasource db {
 }
 
 model File {
-  id           String   @id @default(cuid())
+  id           String   @id @default(uuid())
   originalName String
   savedName    String   @unique
   size         BigInt
   mimetype     String
-  downloadUrl  String
   createdAt    DateTime @default(now())
 }
