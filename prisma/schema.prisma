@@ -17,7 +17,7 @@ model File {
   id           String   @id @default(uuid())
   originalName String
   savedName    String   @unique
-  size         BigInt
+  size         Int
   mimetype     String
   createdAt    DateTime @default(now())
 }

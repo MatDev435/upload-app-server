@@ -1,7 +1,6 @@
 import request from 'supertest'
 import { app } from '../server'
 import path from 'node:path'
-import { env } from '../env'
 
 describe('Upload file', () => {
   beforeAll(async () => {
