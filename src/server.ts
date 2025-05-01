@@ -19,7 +19,7 @@ app.register(fastifyMultipart, {
   },
 })
 app.register(fastifyStatic, {
-  root: path.join(__dirname, '..', 'uploads'),
+  root: path.resolve('uploads'),
   prefix: '/uploads',
 })
 

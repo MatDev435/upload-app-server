@@ -18,7 +18,7 @@ export async function uploadRoute(
   }
 
   const fileName = `${randomUUID()}-${data.filename}`
-  const uploadPath = path.join(__dirname, '..', '..', 'uploads', fileName)
+  const uploadPath = path.resolve('uploads', fileName)
 
   let totalBytes = 0
   const counter = new PassThrough()
