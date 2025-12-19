@@ -6,7 +6,11 @@ export async function fetchFilesRoute(
   request: FastifyRequest,
   reply: FastifyReply
 ) {
-  const files = await prisma.file.findMany()
+  const files = await prisma.file.findMany({
+    orderBy: {
+      createdAt: 'desc',
+    },
+  })
 
   return reply.send({ files })
 }

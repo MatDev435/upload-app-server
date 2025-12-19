@@ -37,5 +37,7 @@ export async function uploadRoute(
     },
   })
 
-  return reply.status(201).send({ downloadUrl: `${env.APP_URL}/${file.id}` })
+  return reply
+    .status(201)
+    .send({ downloadUrl: `${env.APP_URL}/download/${file.id}` })
 }

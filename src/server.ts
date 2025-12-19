@@ -12,6 +12,7 @@ export const app = fastify()
 
 app.register(fastifyCors, {
   origin: '*',
+  exposedHeaders: ['Content-Disposition'],
 })
 app.register(fastifyMultipart, {
   limits: {
