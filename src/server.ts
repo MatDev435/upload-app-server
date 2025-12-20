@@ -28,6 +28,6 @@ app.post('/upload', uploadRoute)
 app.get('/files', fetchFilesRoute)
 app.get('/download/:fileId', downloadRoute)
 
-app.listen({ port: env.PORT }).then(() => {
+app.listen({ port: env.PORT, host: '0.0.0.0' }).then(() => {
   console.log('🔥 HTTP Server Running!')
 })
