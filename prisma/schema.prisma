@@ -50,7 +50,7 @@ model InviteToken {
 model File {
   id           String       @id @default(uuid())
   originalName String
-  savedName    UploadStatus @unique
+  savedName    String       @unique
   size         BigInt
   mimetype     String
   status       UploadStatus @default(PENDING)
