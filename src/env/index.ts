@@ -15,6 +15,14 @@ const envSchema = z.object({
   PORT: z.coerce.number(),
   API_URL: z.string(),
   APP_URL: z.string(),
+  R2_ACCOUNT_ID: z.string(),
+  R2_TOKEN: z.string(),
+  R2_BUCKET: z.string(),
+  R2_ACCESS_KEY_ID: z.string(),
+  R2_SECRET_ACCESS_KEY: z.string(),
+  R2_ENDPOINT: z.string().url(),
+  JWT_SECRET: z.string(),
+  PASSWORD_SALT_ROUNDS: z.coerce.number().default(10),
 })
 
 const _env = envSchema.safeParse(process.env)
