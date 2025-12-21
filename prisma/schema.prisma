@@ -13,11 +13,51 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum UploadStatus {
+  PENDING
+  UPLOADED
+  FAILED
+}
+
+enum UserStatus {
+  INVITED
+  ACTIVE
+}
+
+model User {
+  id        String     @id @default(uuid())
+  username  String     @unique
+  password  String?
+  status    UserStatus @default(INVITED)
+  isAdmin   Boolean    @default(false)
+  createdAt DateTime   @default(now())
+  files     File[]
+
+  @@map("users")
+}
+
+model InviteToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  isUsed    Boolean  @default(false)
+  username  String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@map("invite_tokens")
+}
+
 model File {
-  id           String   @id @default(uuid())
+  id           String       @id @default(uuid())
   originalName String
-  savedName    String   @unique
-  size         Int
+  savedName    UploadStatus @unique
+  size         BigInt
   mimetype     String
-  createdAt    DateTime @default(now())
+  status       UploadStatus @default(PENDING)
+  createdAt    DateTime     @default(now())
+
+  uploadedBy User   @relation(fields: [userId], references: [id])
+  userId     String
+
+  @@map("files")
 }
